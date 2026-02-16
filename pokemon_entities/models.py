@@ -1,10 +1,9 @@
-from django.db import models  # noqa F401
+from django.db import models 
 
-# your models here
+
 class Pokemon(models.Model):
     title = models.CharField(max_length=200, verbose_name="Название покемона")
-    image = models.ImageField(upload_to="image/bulbazavr.png", verbose_name="Ваше изображение", null=True)
-
+    image = models.ImageField(upload_to="media/image/bulbazavr.png", verbose_name="Ваше изображение", null=True)
     def __str__(self):
         return self.title
 
