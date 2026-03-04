@@ -6,6 +6,7 @@ from django.shortcuts import render
 from django.utils.timezone import localtime
 
 from .models import Pokemon, PokemonEntities
+from django.shortcuts import get_object_or_404
 
 
 MOSCOW_CENTER = [55.751244, 37.618423]
@@ -58,7 +59,7 @@ def show_all_pokemons(request):
 
 
 def show_pokemon(request, pokemon_id):
-    requested_pokemons = Pokemon.objects.get(id=pokemon_id)
+    requested_pokemons = get_object_or_404(Pokemon, id=pokemon_id)
     today_time = localtime()
     pokemon_entities = PokemonEntities.objects.filter(appeared_at__lt=today_time, disappeared_at__gt=today_time, pokemon=requested_pokemons)
 
